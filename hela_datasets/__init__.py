@@ -1,5 +1,5 @@
-from LocationMapDataset import LocationMapDataset
-from LocationDirectionMapDataset import LocationDirectionMapDataset
+from .LocationMapDataset import LocationMapDataset
+from .LocationDirectionMapDataset import LocationDirectionMapDataset
 
 def test():
     print("test")

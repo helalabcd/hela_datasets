@@ -7,7 +7,8 @@ import os
 
 from collections import defaultdict
 
-from helpers import gaussian_on_canvas
+from .helpers import gaussian_on_canvas
+from .helpers import get_cell_centroids, get_centroid_map
 
 head = ["frame", "cellid", "a", "b", "c", "d", "xy","xz","xu","x"]
 
@@ -129,7 +130,7 @@ def get_scaled_centroid_map(mask_img, scalars, centroid_size_sigma):
     return a, b
 
 
-from helpers import get_cell_centroids, get_centroid_map
+
 
 def process_burst(burst, centroid_size_sigma):
 

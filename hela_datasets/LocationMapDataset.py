@@ -8,7 +8,7 @@ from tqdm import tqdm
 from torch.utils.data import Dataset
 import os
 from PIL import Image
-from helpers import gaussian_on_canvas, get_cell_centroids, get_centroid_map
+from .helpers import gaussian_on_canvas, get_cell_centroids, get_centroid_map
 
 import os.path
 import pickle
