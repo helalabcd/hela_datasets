@@ -142,7 +142,7 @@ def process_burst(burst, centroid_size_sigma):
     vector_mappings = get_vector_mappings(burst)
     images = [Image.open(path + x).convert('L') for x in sorted(os.listdir(path))]
 
-    frame_infos = []
+    frame_infos = [], [], []
     for frame_index, img in enumerate(images):
         frame_index += 1
         centroid_map = get_cell_centroids(img, df, frame_index)
@@ -150,6 +150,8 @@ def process_burst(burst, centroid_size_sigma):
 
         vectorx, vectory = get_scaled_centroid_map(centroid_map, vector_mappings[frame_index-1], centroid_size_sigma)
 
-        frame_infos.append((result, vectorx, vectory))
+        frame_infos[0].append(result)
+        frame_infos[1].append(vectorx)
+        frame_infos[2].append(vectory)
 
-    return frame_infos
+    return np.array(images), frame_infos
