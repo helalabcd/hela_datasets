@@ -67,5 +67,5 @@ class LocationDirectionMapDataset(Dataset):
         return self.cached_bursts[idx]
 
     def __len__(self):
-        return len(self.self.cached_bursts)
+        return len(self.cached_bursts)
         
