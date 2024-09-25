@@ -53,18 +53,14 @@ class LocationDirectionMapDataset(Dataset):
                 print("Processing uncached burst", burst)
                 
                 burst_frame_infos = process_burst(base_path + "/" + burst, self.centroid_size_sigma)
-                print("burst_frame_infos.shape cached", len(burst_frame_infos[3]))
                 self.cached_bursts.append(burst_frame_infos)
-                print("len(self.cached_bursts)", len(self.cached_bursts))
 
                 pickle.dump( burst_frame_infos, open( cache_path, "wb" ) )
 
             else:
                 print("Loading cached burst", burst)
                 burst_frame_infos = pickle.load( open( cache_path, "rb" ) )
-                print("burst_frame_infos.shape cached", len(burst_frame_infos[3]))
                 self.cached_bursts.append(burst_frame_infos)
-                print("len(self.cached_bursts)", len(self.cached_bursts))
 
 
     def __getitem__(self, idx):
