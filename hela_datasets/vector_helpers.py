@@ -19,7 +19,7 @@ def get_inverse_mappings(burst="train/Burst1_A4_1_VesselID-29_2-0/"):
     
     df = pd.read_csv(f"{burst}/gt/gt.txt", sep=",", names=head)
     path = burst + "img1/"
-    images = [Image.open(path + x) for x in sorted(os.listdir(path))]
+    images = [Image.open(path + x).convert('L') for x in sorted(os.listdir(path))]
 
     all_frames = []
     for frame_index in range(len(images)):
