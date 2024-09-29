@@ -34,7 +34,7 @@ class LocationMapDataset(Dataset):
             return
         
         self.centroid_size_sigma = centroid_size_sigma
-        self.bursts = os.listdir(base_path)[:2]
+        self.bursts = os.listdir(base_path)
 
         self.cached_bursts = []
         self.burst_start_index = []
