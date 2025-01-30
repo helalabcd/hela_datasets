@@ -64,7 +64,10 @@ class ForwardGridDataset(Dataset):
             pointer = 0
             for ix in range(l):
                 for iy in range(l):
-                    canvas[ix*x:(ix*x+x), iy*y:(iy*y+y)] = a[pointer]
+                    if pointer <= len(a):
+                        canvas[ix*x:(ix*x+x), iy*y:(iy*y+y)] = a[pointer]
+                    else:
+                        print("WARN: Your sequence length is not a perfect square!")
                     pointer += 1
             return canvas
 
