@@ -1,5 +1,4 @@
 from .LocationMapDataset import LocationMapDataset
 from .LocationDirectionMapDataset import LocationDirectionMapDataset
+from .ForwardGridDataset import ForwardGridDataset
 
-def test():
-    print("test")
