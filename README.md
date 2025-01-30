@@ -1,3 +1,6 @@
+## Notes
+- The last frame / train target is usually in the "bottom right"
+
 ## Usage
 ```python
 pip install git+https://github.com/helalabcd/hela_datasets
