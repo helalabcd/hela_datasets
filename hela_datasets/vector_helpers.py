@@ -154,4 +154,4 @@ def process_burst(burst, centroid_size_sigma):
         frame_infos[1].append(vectorx)
         frame_infos[2].append(vectory)
 
-    return np.array(images), frame_infos
+    return np.array(images)/255, frame_infos
