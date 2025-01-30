@@ -20,12 +20,9 @@ class ForwardGridDataset(Dataset):
         for burst in self.ds:
             X, (c,d1,d2) = burst
 
-            print(X.shape)
-            print(c.shape, d1.shape, d2.shape)
             self.start_at.append(self.total_length)
             self.total_length += len(X) - self.sequence_length
             
-        print(self.start_at)
 
     def __getitem__(self, idx):
         
@@ -33,14 +30,12 @@ class ForwardGridDataset(Dataset):
         burst_index = self.start_at.index(start_idx)
 
         inburst_index = idx - start_idx
-        print(idx, burst_index, inburst_index)
 
         X = self.ds[burst_index][0][inburst_index:inburst_index+self.sequence_length]
         centroids = self.ds[burst_index][1][0][inburst_index:inburst_index+self.sequence_length]
         y1 = self.ds[burst_index][1][1][inburst_index:inburst_index+self.sequence_length]
         y2 = self.ds[burst_index][1][2][inburst_index:inburst_index+self.sequence_length]
         
-        print(X.shape, centroids.shape, y1.shape, y2.shape)
         fixed_transformation = FixedTransform(min_angle=0, max_angle=359, crop_height=self.crop_size, crop_width=self.crop_size)
 
         """ Apply Fixed Transform (needs a channel dimension, so we unsqueeze and squeeze again) """
@@ -58,8 +53,6 @@ class ForwardGridDataset(Dataset):
         centroids = centroids.squeeze()
         y1 = y1.squeeze()
         y2 = y2.squeeze()
-
-        print(X.shape, centroids.shape, y1.shape, y2.shape)
 
         """ Arrange the frames and labels into a supergrid each (works best when sequence_lenght is a perfect square """
 
