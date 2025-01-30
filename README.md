@@ -12,12 +12,10 @@ for burst in ds:
     x, y = burst
 ```
 
-# Example: Visualize the dataset
-```
-import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors
-from hela_datasets import LocationDirectionMapDataset
-import numpy as np
+
+# Example: Interpretation of the per-burst dataset
+![image](https://github.com/user-attachments/assets/15641613-8049-48aa-a616-5695d0f6b214)
+
 
 fig, ax = plt.subplots(10, 4, figsize=(12, 24))
 
