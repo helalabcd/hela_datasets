@@ -64,7 +64,8 @@ class LocationDirectionMapDataset(Dataset):
 
 
     def __getitem__(self, idx):
-        return self.cached_bursts[idx]
+        X, (c, y1, y2) = self.cached_bursts[idx]
+        return X, (np.array(c), np.array(y1), np.array(y2))
 
     def __len__(self):
         return len(self.cached_bursts)
