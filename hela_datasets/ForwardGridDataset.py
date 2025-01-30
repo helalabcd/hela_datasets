@@ -8,11 +8,12 @@ import math
 
 class ForwardGridDataset(Dataset):
 
-    def __init__(self, base_path=None, centroid_size_sigma=1, sequence_length=1):
+    def __init__(self, base_path=None, centroid_size_sigma=1, sequence_length=1, crop_size=128):
         
         self.start_at = []
         self.total_length = 0
         self.sequence_length = sequence_length
+        self.crop_size = crop_size
 
         self.ds = LocationDirectionMapDataset(base_path, centroid_size_sigma=centroid_size_sigma)
 
@@ -40,7 +41,7 @@ class ForwardGridDataset(Dataset):
         y2 = self.ds[burst_index][1][2][inburst_index:inburst_index+self.sequence_length]
         
         print(X.shape, centroids.shape, y1.shape, y2.shape)
-        fixed_transformation = FixedTransform(min_angle=0, max_angle=359, crop_height=128, crop_width=128)
+        fixed_transformation = FixedTransform(min_angle=0, max_angle=359, crop_height=self.crop_size, crop_width=self.crop_size)
 
         """ Apply Fixed Transform (needs a channel dimension, so we unsqueeze and squeeze again) """
         X = torch.Tensor(X)[:, None, :, :]
