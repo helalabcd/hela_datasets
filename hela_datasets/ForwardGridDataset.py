@@ -16,7 +16,7 @@ class ForwardGridDataset(Dataset):
 
         self.ds = LocationDirectionMapDataset(base_path, centroid_size_sigma=centroid_size_sigma)
 
-        for burst in ds:
+        for burst in self.ds:
             X, (c,d1,d2) = burst
 
             print(X.shape)
