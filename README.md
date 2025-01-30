@@ -1,10 +1,12 @@
 ## Usage
 ```python
-%pip install git+https://github.com/helalabcd/hela_datasets
+pip install git+https://github.com/helalabcd/hela_datasets
 ```
 
 ```python
-from hela_datasets import LocationDirectionMapDatasetds = LocationDirectionMapDataset("miniHela/train")
+from hela_datasets import LocationDirectionMapDataset
+
+ds = LocationDirectionMapDataset("HeLa_dataset/train")
 
 for burst in ds:
     x, y = burst
