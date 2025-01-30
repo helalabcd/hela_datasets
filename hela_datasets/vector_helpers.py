@@ -62,7 +62,7 @@ def get_vector_mappings(burst="train/Burst1_A4_1_VesselID-29_2-0/"):
 
         #print("mapping", mapping.keys())
         for cell_id in mapping.keys():
-            print("cell_id", cell_id)
+            #print("cell_id", cell_id)
             #print("xd", cell_id, mapping[cell_id], last_mapping[cell_id])
             try:
                 difference = mapping[cell_id][0]-last_mapping[cell_id][0], mapping[cell_id][1]-last_mapping[cell_id][1]
