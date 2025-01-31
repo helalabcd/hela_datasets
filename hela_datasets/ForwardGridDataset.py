@@ -8,12 +8,13 @@ import math
 
 class ForwardGridDataset(Dataset):
 
-    def __init__(self, base_path=None, centroid_size_sigma=1, sequence_length=1, crop_size=128):
+    def __init__(self, base_path=None, centroid_size_sigma=1, sequence_length=1, crop_size=128, device="cpu"):
         
         self.start_at = []
         self.total_length = 0
         self.sequence_length = sequence_length
         self.crop_size = crop_size
+        self.device = device
 
         self.ds = LocationDirectionMapDataset(base_path, centroid_size_sigma=centroid_size_sigma)
 
@@ -39,10 +40,10 @@ class ForwardGridDataset(Dataset):
         fixed_transformation = FixedTransform(min_angle=0, max_angle=359, crop_height=self.crop_size, crop_width=self.crop_size)
 
         """ Apply Fixed Transform (needs a channel dimension, so we unsqueeze and squeeze again) """
-        X = torch.Tensor(X)[:, None, :, :]
-        centroids = torch.Tensor(centroids)[:, None, :, :]
-        y1 = torch.Tensor(y1)[:, None, :, :]
-        y2 = torch.Tensor(y2)[:, None, :, :]
+        X = torch.Tensor(X)[:, None, :, :].to(self.device)
+        centroids = torch.Tensor(centroids)[:, None, :, :].to(self.device)
+        y1 = torch.Tensor(y1)[:, None, :, :].to(self.device)
+        y2 = torch.Tensor(y2)[:, None, :, :].to(self.device)
 
         X = fixed_transformation(X)
         centroids = fixed_transformation(centroids)
