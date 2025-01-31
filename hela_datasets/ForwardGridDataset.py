@@ -72,10 +72,10 @@ class ForwardGridDataset(Dataset):
             return canvas
 
         # Create supergrid, also add singular color channel
-        X_supgrid = make_supergrid(X)[:, None, :, :]
-        centroids_supgrid = make_supergrid(centroids)[:, None, :, :]
-        y1_supgrid = make_supergrid(y1)[:, None, :, :]
-        y2_supgrid = make_supergrid(y2)[:, None, :, :]
+        X_supgrid = make_supergrid(X)[None]
+        centroids_supgrid = make_supergrid(centroids)[None]
+        y1_supgrid = make_supergrid(y1)[None]
+        y2_supgrid = make_supergrid(y2)[None]
 
         return X_supgrid, (centroids_supgrid, y1_supgrid, y2_supgrid)
 
