@@ -23,7 +23,7 @@ class FixedTransform():
 
             ex = frame[0]
 
-            zero = torch.Tensor([0,0,0])
+            zero = torch.Tensor([0,0,0], device=img.device)
             out_of_bounds = torch.allclose(ex[:, 0, 0], zero) or \
                 torch.allclose(ex[:, 0, -1], zero) or \
                 torch.allclose(ex[:, -1, 0], zero) or \
