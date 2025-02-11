@@ -121,12 +121,18 @@ def get_scaled_centroid_map(mask_img, scalars, centroid_size_sigma):
         gaussiansx.append(goc_x * scalex)
         gaussiansy.append(goc_y * scaley)
 
+    """ ???
     a = np.mean(np.array(gaussiansx), axis=0).T
     a_index_of_most_extreme = np.argmax(np.abs(a))
     
     b = np.mean(np.array(gaussiansy), axis=0).T
     b_index_of_most_extreme = np.argmax(np.abs(b))
-    
+    """
+    a = np.array(gaussiansx)
+    b = np.array(gaussiansy)
+    # Find the most extreme value
+    a_extreme = a[np.argmax(np.abs(a))]
+    b_extreme = b[np.argmax(np.abs(b))]
     return a, b
 
 
