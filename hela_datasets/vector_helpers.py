@@ -132,21 +132,11 @@ def get_scaled_centroid_map(mask_img, scalars, centroid_size_sigma):
     b = np.array(gaussiansy)
     
     # Find the most extreme value
-    print("a", a.shape)
     a_max_indices = np.argmax(np.abs(a), axis=0)
-    print("a_max_indices", a_max_indices.shape)
     a_extreme = np.take_along_axis(a, np.expand_dims(a_max_indices, axis=0), axis=0).squeeze(0)
-    print(a_extreme.shape)
-    
 
-
-    # Find the most extreme value
-    print("b", b.shape)
     b_max_indices = np.argmax(np.abs(b), axis=0)
-    print("b_max_indices", b_max_indices.shape)
     b_extreme = np.take_along_axis(b, np.expand_dims(b_max_indices, axis=0), axis=0).squeeze(0)
-    print(b_extreme.shape)
-    
     
     return a_extreme, b_extreme
 
