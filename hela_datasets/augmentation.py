@@ -49,7 +49,7 @@ class FixedTransform():
                 j = torch.randint(0, w - tw + 1, size=(1,)).item()
                 self.position = (i, j)
 
-        img = TF.rotate(img, self.angle)
+        #img = TF.rotate(img, self.angle)
         img = TF.crop(img, *self.position, self.crop_height, self.crop_width)
         #img = TF.resize(img, (224, 224))
         if not isinstance(img, torch.Tensor):
