@@ -1,7 +1,7 @@
 from .LocationDirectionMapDataset import LocationDirectionMapDataset
 import numpy as np
 from torch.utils.data import Dataset
-from augmentation import FixedTransform
+from .augmentation import FixedTransform
 import torch
 import math
 
