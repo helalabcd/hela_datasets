@@ -15,6 +15,7 @@ class ForwardGridDataset(Dataset):
         self.sequence_length = sequence_length
         self.crop_size = crop_size
         self.device = device
+        self.centroid_size_sigma = centroid_size_sigma
 
         self.ds = LocationDirectionMapDataset(base_path, centroid_size_sigma=centroid_size_sigma)
 
