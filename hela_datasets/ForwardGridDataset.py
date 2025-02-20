@@ -35,8 +35,13 @@ class ForwardGridDataset(Dataset):
 
         X = self.ds[burst_index][0][inburst_index:inburst_index+self.sequence_length]
         centroids = self.ds[burst_index][1][0][inburst_index:inburst_index+self.sequence_length]
-        y1 = self.ds[burst_index][1][1][inburst_index:inburst_index+self.sequence_length]
-        y2 = self.ds[burst_index][1][2][inburst_index:inburst_index+self.sequence_length]
+        y1 = self.ds[burst_index][1][1][:, :, inburst_index:inburst_index+self.sequence_length]
+        y2 = self.ds[burst_index][1][2][:, :, inburst_index:inburst_index+self.sequence_length]
+        
+        y1 = np.transpose(y1, (2,0,1))
+        y2 = np.transpose(y2, (2,0,1))
+        
+        #return X, centroids, y1, y2
         
         fixed_transformation = FixedTransform(min_angle=0, max_angle=359, crop_height=self.crop_size, crop_width=self.crop_size)
 
